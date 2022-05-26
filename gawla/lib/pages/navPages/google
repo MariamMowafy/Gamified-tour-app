@@ -1,0 +1,181 @@
+import 'dart:async';
+import 'dart:developer';
+import 'dart:typed_data';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import '../../cubit/cubit_states.dart';
+import '../../cubit/cubits.dart';
+import '../../widgets/app_large_text.dart';
+import '../../widgets/responsive_button.dart';
+
+
+
+
+class game extends StatefulWidget {
+  game({Key? key}) : super(key: key);
+
+  @override
+  State<game> createState() => _gameState();
+}
+
+class _gameState extends State<game> {
+  @override
+ Widget build(BuildContext context) {
+   
+    return BlocBuilder<Cubits,CubitStates>(builder: (context,state){
+      
+      List locations = [LatLng(29.9760, 31.1308), LatLng(29.92726, 31.1284),LatLng(29.9753,31.1376),LatLng(29.9716,31.1280)];
+      gameState detail = state as gameState;
+      StreamSubscription? _locationSubscription;
+      Location _locationTracker = Location();
+      late Marker marker;
+      late Circle circle;
+      
+      GoogleMapController? _controller;
+      final CameraPosition initiallocation = CameraPosition(
+        target: LatLng(29.976480, 31.131302), zoom: 17
+      );
+
+
+
+  marker = Marker(markerId: MarkerId('new'),
+  position: LatLng(29.976480, 31.131302),
+  flat: true,
+  draggable: false
+
+  );
+  circle = Circle(circleId: CircleId('neww'),
+  strokeColor: Colors.blue,
+  zIndex: 2,
+
+  fillColor: Colors.blue.withAlpha(70)
+  );
+
+@override
+
+      Future<dynamic> getMarker() async{
+  ByteData byteData = await DefaultAssetBundle.of(context).load("assets/img/pin.png");
+  return byteData.buffer.asUint8List();
+}
+  void updateMarkerAndCircle (LocationData newLocalData , Uint8List imageData){
+    LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+    this.setState(() {
+      marker = Marker(markerId: MarkerId('Home'),
+      position: latlng,
+      rotation: newLocalData.heading,
+      draggable: false,
+      zIndex: 2,
+      flat: true,
+      anchor: Offset(0.5,0.5),
+      icon: BitmapDescriptor.fromBytes(imageData),
+      
+      );
+      circle = Circle(circleId: CircleId('pin'),
+      radius: newLocalData.accuracy,
+      zIndex: 1,
+      strokeColor: Colors.blue,
+      center: latlng,
+      fillColor: Colors.blue.withAlpha(70)
+      );
+
+    });
+    
+  }
+      
+
+
+  Future getCurrentLocation() async {
+  try{
+    Uint8List imageData = await getMarker();
+    var location = await _locationTracker.getLocation();
+    var lat=location.latitude;
+    var lng=location.longitude;
+    updateMarkerAndCircle(location, imageData);
+    if(_locationSubscription != null){
+      _locationSubscription!.cancel();
+    }
+    _locationSubscription = _locationTracker.onLocationChanged().listen((newLocationData) { 
+      if(_controller != null){
+        _controller!.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
+        bearing: 192,
+        target:  LatLng(newLocationData.latitude, newLocationData.longitude),
+        tilt: 0,
+        zoom: 18
+        )));
+        updateMarkerAndCircle(newLocationData,imageData);
+      }
+    });
+   // return [lat,lng];
+  }
+  on PlatformException catch(e){
+    if (e.code == 'PERMISSION_DENIED'){
+      debugPrint("Permission Denied");
+      
+    
+    }
+   // rethrow;
+  }
+      }
+
+
+void dispose(){
+  if(_locationSubscription !=null){
+    _locationSubscription!.cancel();
+  }
+  super.dispose();
+}
+
+
+      return Scaffold(
+        body: Container(
+          child: Column(
+            children: [
+              //Text('` text'),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container( 
+                  alignment: Alignment.center,
+                  height:500,
+                  width: 500,
+                  child: 
+                GoogleMap(
+                  mapType: MapType.hybrid,
+                  
+                  circles: Set.of((circle != null) ? [circle]: []),
+ 
+                  markers: Set.of((marker != null)?[marker] : []),
+                  initialCameraPosition: initiallocation,
+                   myLocationButtonEnabled: true,
+                   zoomControlsEnabled: true,
+                   onMapCreated: (GoogleMapController controller){
+                     _controller = controller;
+                   },
+        //             circles: Set.from([Circle( circleId: CircleId('currentCircle'),
+        //  // center: ,
+        //             radius: 50,
+        //              fillColor: Colors.blue.shade100.withOpacity(0.5),
+        //                 strokeColor:  Colors.blue.shade100.withOpacity(0.1),)])
+                   ),
+                   
+                  ),
+              ),
+              
+            ],
+
+          ),
+          
+        ),
+         floatingActionButton: FloatingActionButton(
+                     child: Icon(Icons.location_searching),
+                     onPressed: (){
+                       getCurrentLocation();
+                     },
+                   ),
+          
+                   );
+        });}
+}
