@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/pages/game_pages/nav.dart';
+import 'package:gawla/providers/checkpoints_provider.dart';
 import 'package:gawla/widgets/responsive_button.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 
 import 'navigation_page.dart';
 class fact extends StatelessWidget {
@@ -8,6 +11,8 @@ class fact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final checkpoints = Provider
+        .of<checkpoints_provider>(context, listen: true);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top:50,bottom: 50),
@@ -44,7 +49,8 @@ class fact extends StatelessWidget {
                     GestureDetector(
                                          onTap: (){
                                             // BlocProvider.of<Cubits>(context).goHome();
-                                           Navigator.push(context, MaterialPageRoute(builder: ((context) => const nav())));
+                                        //put next checkpoint fnc
+                                        Navigator.push(context, MaterialPageRoute(builder: ((context) => nav())));
                                          },
                                          child: Container(
                                              width: 100,

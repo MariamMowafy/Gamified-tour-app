@@ -29,16 +29,19 @@ class QuestionsModel{
     //send info to variable "json"
     return QuestionsModel(
       question: json['question'],
-      TourModel: json['tour'],
-      CheckpointModel: json['checkpoint'],
       answer1: json["answer1"],
       answer2: json["answer2"],
       answer3: json["answer3"],
       correctAnswer: json["correctAnswer"],
       fact: json["fact"],
       clue: json["clue"],
+      TourModel: json['tour'],
+      CheckpointModel: json['checkpoint'],
 
     );
   } //string : as the data types, dynamic: as the data of these types
-
+@override
+String toString() {
+  return 'QuestionModel{question:$question,answer1:$answer1,answer2:$answer2,answer3:$answer3,correctAnswer:$correctAnswer,fact:$fact,clue:$clue}' ;
+}
 }

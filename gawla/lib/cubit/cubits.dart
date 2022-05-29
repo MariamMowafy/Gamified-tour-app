@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:gawla/models/checkpoint_model.dart';
 import 'package:gawla/models/data_model.dart';
+import 'package:gawla/models/questions_model.dart';
 import 'package:gawla/models/tour_model.dart';
 import 'package:gawla/pages/navPages/redeem_reward.dart';
 import 'package:gawla/pages/navPages/reward_details.dart';
@@ -51,4 +53,7 @@ class Cubits extends Cubit<CubitStates> {
    howtoplay(TourModel tour){
     emit(howtoplayState(tour));
   }
+  //    navigation(QuestionsModel question, CheckpointModel checkpoint){
+  //   emit(navigation);
+  // }
 }

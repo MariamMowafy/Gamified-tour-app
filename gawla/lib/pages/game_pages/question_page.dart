@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/models/questions_model.dart';
 import 'package:gawla/pages/game_pages/fact_page.dart';
 import 'package:gawla/widgets/responsive_button.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/checkpoints_provider.dart';
 class quest extends StatelessWidget {
   const quest({Key? key}) : super(key: key);
 
@@ -42,7 +46,8 @@ class quest extends StatelessWidget {
                   GestureDetector(
                                        onTap: (){
                                           // BlocProvider.of<Cubits>(context).goHome();
-                                         Navigator.push(context, MaterialPageRoute(builder: ((context) => const fact())));
+                                        Navigator.push(context, MaterialPageRoute(builder: ((context) => const fact())));
+                                        //pass checkpoints
                                        },
                                        child: Container(
                                            width: 100,
