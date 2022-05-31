@@ -12,8 +12,8 @@ import 'package:gawla/providers/checkpoints_provider.dart';
 import 'package:provider/provider.dart';
 
 class nav extends StatelessWidget {
-  
-   const nav({Key? key}) : super(key: key);
+  final index;
+   const nav({Key? key, this.index}) : super(key: key);
 
 
   //   Future fetchquestions()async {
@@ -82,7 +82,7 @@ class nav extends StatelessWidget {
               );
             }
             else {
-              return Nav();
+              return Nav(index: index,);
               // if(checkpoints_provider().flag==true){
               //   return Nav();
               // }

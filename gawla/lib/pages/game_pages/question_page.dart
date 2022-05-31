@@ -7,7 +7,11 @@ import 'package:provider/provider.dart';
 
 import '../../providers/checkpoints_provider.dart';
 class quest extends StatelessWidget {
-  const quest({Key? key}) : super(key: key);
+  final QuestionsModel question;
+  const quest({
+    Key? key,
+    required this.question,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +40,9 @@ class quest extends StatelessWidget {
                 children: [
                   Text('correct!'),
                   SizedBox(height:10),
-                  Text('pop question'),
+                  Text(question.fact),
                   SizedBox(height:10),
-                  Text('question description'),
+                  Text(question.fact),
                   SizedBox(height:10),
                   Text('a) answer1 b) answer2 c) answer3'),
                   SizedBox(height:10),

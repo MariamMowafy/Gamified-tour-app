@@ -11,11 +11,10 @@ import 'package:provider/provider.dart';
 import '../../widgets/responsive_button.dart';
 
 class Nav extends StatelessWidget {
-
+  final index;
   const Nav({
     Key? key,
-    
-   
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -23,8 +22,23 @@ class Nav extends StatelessWidget {
    checkpoints_provider().fetchProducts();
     late checkpoints_provider checkpoints = Provider.of<checkpoints_provider>(context);
     late int checkpointindex = checkpoints_provider().index;
-
-      return  Scaffold(
+    
+           return  FutureBuilder(
+          future: checkpoints_provider().fetchquestions(index),
+          
+          //checkpoints_provider().fetchProducts(), 
+            builder: (context,snapshot) {
+            
+            if(snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            else if(index==2) {
+              print('el taht da el snapshot.data');
+              print(snapshot.data);
+              QuestionsModel question = snapshot.data as QuestionsModel;
+              return Scaffold(
       body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
@@ -47,9 +61,9 @@ class Nav extends StatelessWidget {
                   color: Colors.grey[100],
                   child: Column(
                     children: [
-                     Text(''),
+                     Text(question.clue),
                       SizedBox(height:10),
-                     Text(""),
+                     Text(question.answer1),
                       SizedBox(height:10),
                       Text('press arrived to check your location!'),
                       SizedBox(height:10),
@@ -57,7 +71,7 @@ class Nav extends StatelessWidget {
                       GestureDetector(
                                            onTap: (){
                                               // BlocProvider.of<Cubits>(context).goHome();
-                                             Navigator.push(context, MaterialPageRoute(builder: ((context) => const quest())));
+                                             Navigator.push(context, MaterialPageRoute(builder: ((context) => quest(question: question))));
                                            },
                                            child: Container(
                                                width: 100,
@@ -76,6 +90,25 @@ class Nav extends StatelessWidget {
             ]
         ),
           ),
-    );}
-  }
+    );
+              // if(checkpoints_provider().flag==true){
+   }
+   else{
+     return const Center(
+                child: CircularProgressIndicator(),
+              );
+   }
+   
+   
+   
+             //   return Nav();
+              // }
+              // else return const Center(
+              //   child: CircularProgressIndicator(),
+                  // );
+            
+  });
 
+}
+
+}

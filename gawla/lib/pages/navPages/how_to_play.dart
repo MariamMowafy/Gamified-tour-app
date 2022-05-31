@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubit_states.dart';
+import 'package:gawla/pages/game_pages/nav.dart';
 import 'package:gawla/pages/game_pages/navigation_page.dart';
 
 import '../../cubit/cubits.dart';
@@ -127,7 +128,7 @@ class _howtoplayState extends State<howtoplay> {
                                        GestureDetector(
                                        onTap: (){
                                           // BlocProvider.of<Cubits>(context).goHome();
-                                         Navigator.push(context, MaterialPageRoute(builder: ((context) => const nav())));
+                                         Navigator.push(context, MaterialPageRoute(builder: ((context) => const Nav(index: 1))));
                                        },
                                        child: Container(
                                            width: 100,

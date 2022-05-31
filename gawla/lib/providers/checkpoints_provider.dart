@@ -35,7 +35,6 @@ class checkpoints_provider with ChangeNotifier{
    
     print('fetch checkpoints');
 
-    await fetchquestions();
     final url = Uri.parse('http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tour/1/checkpoints');
    
       final response = await http.get(url);
@@ -77,16 +76,16 @@ class checkpoints_provider with ChangeNotifier{
         notifyListeners();
       }
 
-       Future <QuestionsModel> fetchquestions()async {
+       Future <QuestionsModel> fetchquestions(int indexx)async {
     print('fetch questions');
-    final url = Uri.parse('http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tour/1/checkpoint/$index1/question');
+    final url = Uri.parse('http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tour/1/checkpoint/$indexx/question');
    
       final response = await http.get(url);
       print(response);      
       final Map<String,dynamic> extractedData = Map<String,dynamic>.from(json.decode(response.body) );
       return  QuestionsModel.fromJson(extractedData);
      
-      print(QuestionsModel.fromJson(extractedData).toString());
+      ///print(QuestionsModel.fromJson(extractedData).toString());
       // questionsList =  QuestionsModel.fromJson(extractedData);  
        //questionsList =  QuestionsModel.fromJson(extractedData);
       // return questionsList;

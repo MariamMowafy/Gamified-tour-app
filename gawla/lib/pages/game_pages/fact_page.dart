@@ -50,7 +50,8 @@ class fact extends StatelessWidget {
                                          onTap: (){
                                             // BlocProvider.of<Cubits>(context).goHome();
                                         //put next checkpoint fnc
-                                        Navigator.push(context, MaterialPageRoute(builder: ((context) => nav())));
+                                        checkpoints_provider().nextCheckpoint();
+                                        Navigator.push(context, MaterialPageRoute(builder: ((context) =>  nav(index: 2))));
                                          },
                                          child: Container(
                                              width: 100,
