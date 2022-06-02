@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class DataServices{
   //the below baseUrl is of "laravel backend"
   //from "postman's Uri", beside Dropdown menu Get/Post
-  var index;
+ // var index;
   String baseUrl = "http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com";//depends on kind of back-end used
   Future<List<DataModel>>getTourguideInfo() async {
     var apiUrl = '/tourCreators';//combined-Uri
@@ -71,7 +71,7 @@ class DataServices{
       return <CheckpointModel>[];
     }
   }
-    Future<List<dynamic>>getcheckpointsquestion() async {
+    Future<List<dynamic>>getcheckpointsquestion(index) async {
     
     void incrementindex(){
       index++;

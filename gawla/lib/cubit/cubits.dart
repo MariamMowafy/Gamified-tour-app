@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:gawla/models/checkpoint_model.dart';
+
 import 'package:gawla/models/data_model.dart';
 import 'package:gawla/models/questions_model.dart';
 import 'package:gawla/models/tour_model.dart';
+import 'package:gawla/pages/game_pages/question_page.dart';
 import 'package:gawla/pages/navPages/redeem_reward.dart';
 import 'package:gawla/pages/navPages/reward_details.dart';
 import 'package:gawla/services/data_services.dart';
+import 'package:gawla/widgets/checkpoint.dart';
 
 import 'cubit_states.dart';
 
@@ -53,7 +56,18 @@ class Cubits extends Cubit<CubitStates> {
    howtoplay(TourModel tour){
     emit(howtoplayState(tour));
   }
+     newnave({required index} ) async {
+      try {
+      emit(LoadingState());//show loading state
+      final List<CheckpointModel> checkpoint = await data.getcheckpoints() as List<CheckpointModel>;//during this try to load data
+      final List<QuestionsModel> question = await data.getcheckpointsquestion(index+1)  as List<QuestionsModel>;
+      emit(newnavState(checkpoint,question));//once data loaded, trigger the loaded state with the new updated data
+    } catch (e) {}
+  }
+
+
+
+  }
   //    navigation(QuestionsModel question, CheckpointModel checkpoint){
   //   emit(navigation);
   // }
-}

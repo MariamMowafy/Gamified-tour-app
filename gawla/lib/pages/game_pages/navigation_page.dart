@@ -82,6 +82,7 @@ class nav extends StatelessWidget {
               );
             }
             else {
+              
               return Nav(index: index,);
               // if(checkpoints_provider().flag==true){
               //   return Nav();

@@ -11,6 +11,7 @@ class checkpoints_provider with ChangeNotifier{
    int index = 0;
    int index1=1;
    bool flag=false;
+   String location='';
   // external String toString();
    
     // Future <void> fetchquestions()async {
@@ -61,6 +62,7 @@ class checkpoints_provider with ChangeNotifier{
       /// questionsList =  QuestionsModel.fromJson(extractedData);
       // questionsList =  QuestionsModel.fromJson(extractedData);
       flag = true;
+      
      print(flag);
        notifyListeners();
       }

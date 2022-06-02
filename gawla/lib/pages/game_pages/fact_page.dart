@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 
 import 'navigation_page.dart';
 class fact extends StatelessWidget {
-  const fact({Key? key}) : super(key: key);
+  final index;
+  const fact({Key? key, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class fact extends StatelessWidget {
                                             // BlocProvider.of<Cubits>(context).goHome();
                                         //put next checkpoint fnc
                                         checkpoints_provider().nextCheckpoint();
-                                        Navigator.push(context, MaterialPageRoute(builder: ((context) =>  nav(index: 2))));
+                                        Navigator.push(context, MaterialPageRoute(builder: ((context) =>  Nav(index: index+1))));
                                          },
                                          child: Container(
                                              width: 100,

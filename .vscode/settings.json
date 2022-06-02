@@ -1,0 +1,6 @@
+{
+    "editor.fastScrollSensitivity": 5,
+    "editor.mouseWheelScrollSensitivity": 0.004,
+    "workbench.list.mouseWheelScrollSensitivity": 0.004,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.004
+}

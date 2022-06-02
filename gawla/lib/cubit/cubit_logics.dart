@@ -7,10 +7,13 @@ import 'package:gawla/pages/navPages/home_page.dart';
 import 'package:gawla/pages/navPages/how_to_play.dart';
 import 'package:gawla/pages/navPages/redeem_reward.dart';
 import 'package:gawla/pages/navPages/reward_details.dart';
+import 'package:gawla/pages/newgamepages/newpass.dart';
+import 'package:gawla/pages/newgamepages/newquestion.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
 import '../pages/navPages/game.dart';
 import '../pages/navPages/choose_tour.dart';
+import '../pages/newgamepages/newnav.dart';
 
 class CubitLogics extends StatefulWidget {
   const CubitLogics({Key? key}) : super(key: key);
@@ -53,12 +56,15 @@ class _CubitLogicsState extends State<CubitLogics> {
             if(state is gameState){
             return game();
           }else{
+            if(state is newnavState){
+            return newnave(index: 0,);
+          }else{
             print("not the required state");
             return Container();
           }}
-          }
-        }}
-        }}
+          }}
+        }}}
+        }
       ),
 
       );

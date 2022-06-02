@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:gawla/models/checkpoint_model.dart';
 import 'package:gawla/models/data_model.dart';
+import 'package:gawla/models/questions_model.dart';
 import 'package:gawla/models/tour_model.dart';
 
 abstract class CubitStates extends Equatable{}
@@ -107,5 +109,16 @@ class DetailState extends CubitStates{
   @override
   // TODO: implement props
   List<Object> get props => [tour];
+
+}
+class newnavState extends CubitStates{
+  newnavState(this.checkpoint,this.question);
+
+  final List<CheckpointModel>checkpoint;
+  final List<QuestionsModel>question;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [checkpoint,question];
 
 }

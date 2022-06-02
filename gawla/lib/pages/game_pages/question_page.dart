@@ -8,9 +8,10 @@ import 'package:provider/provider.dart';
 import '../../providers/checkpoints_provider.dart';
 class quest extends StatelessWidget {
   final QuestionsModel question;
+  final index;
   const quest({
     Key? key,
-    required this.question,
+    required this.question, this.index,
   }) : super(key: key);
 
   @override
@@ -50,7 +51,7 @@ class quest extends StatelessWidget {
                   GestureDetector(
                                        onTap: (){
                                           // BlocProvider.of<Cubits>(context).goHome();
-                                        Navigator.push(context, MaterialPageRoute(builder: ((context) => const fact())));
+                                        Navigator.push(context, MaterialPageRoute(builder: ((context) => fact(index: index))));
                                         //pass checkpoints
                                        },
                                        child: Container(

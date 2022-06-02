@@ -20,6 +20,7 @@ class _howtoplayState extends State<howtoplay> {
   Widget build(BuildContext context) {
     return BlocBuilder<Cubits,CubitStates>(builder: (context,state){
       howtoplayState detail = state as howtoplayState;
+      //newnavState test = state as newnavState;
     return Scaffold(
      body: Container(
           child: Column(
@@ -115,7 +116,9 @@ class _howtoplayState extends State<howtoplay> {
                         GestureDetector(
                                        onTap: (){
                                           // BlocProvider.of<Cubits>(context).goHome();
-                                         BlocProvider.of<Cubits>(context).game(detail.tour);
+                                         //BlocProvider.of<Cubits>(context).game(detail.tour);
+
+                                         BlocProvider.of<Cubits>(context).newnave(index: 0);
                                        },
                                        child: Container(
                                            width: 100,
