@@ -5,6 +5,7 @@ import '../../cubit/cubit_states.dart';
 import '../../cubit/cubits.dart';
 import '../../widgets/app_large_text.dart';
 import '../../widgets/responsive_button.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class redeemreward extends StatefulWidget {
   redeemreward({Key? key}) : super(key: key);
@@ -53,7 +54,12 @@ class _redeemrewardState extends State<redeemreward> {
                         SizedBox(height: 100,),
                           Container(
                             //alignment: Alignment.center,
-                            child: Image(image: AssetImage('assets/img/barcode.png'))),
+                            child: QrImage(
+                                   data: "1234567890",
+                                   version: QrVersions.auto,
+                                   size: 500.0,
+                          )),
+                            //Image(image: AssetImage('assets/img/barcode.png'))),
                            
                           
                            SizedBox(height:20),

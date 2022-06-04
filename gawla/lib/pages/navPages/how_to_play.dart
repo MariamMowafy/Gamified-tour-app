@@ -61,35 +61,35 @@ class _howtoplayState extends State<howtoplay> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                             children:[
-                              SizedBox(height: 50,),
+                              SizedBox(height: 20,),
                            Text(
                              '1. Search for the monument.',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
                                fontFamily: 'ubuntu',
 
                              ),),
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              Text(
                              '2. Pin your current location on the map.',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
                                fontFamily: 'ubuntu',
 
                              ),),
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              Text(
                              '3. Check if your location is correct.',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
                                fontFamily: 'ubuntu',
 
                              ),),
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              Text(
                              '4. Do the stated task to get the next clue.',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
                                fontFamily: 'ubuntu',
 
                              ),),
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              Text(
                              '5. Repeat until you reach the final clue to get your reward.',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
@@ -97,14 +97,14 @@ class _howtoplayState extends State<howtoplay> {
 
                              ),),
 
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              Text(
                              '6. Finally, don\'t forget to have fun and enjoy!',textAlign: TextAlign.left,style: TextStyle(
                                fontSize:20,
                                fontFamily: 'ubuntu',
 
                              ),),
-                             SizedBox(height: 30,),
+                             SizedBox(height: 20,),
                              
 
 
@@ -118,7 +118,7 @@ class _howtoplayState extends State<howtoplay> {
                                           // BlocProvider.of<Cubits>(context).goHome();
                                          //BlocProvider.of<Cubits>(context).game(detail.tour);
 
-                                         BlocProvider.of<Cubits>(context).newnave(index: 0);
+                                         BlocProvider.of<Cubits>(context).newnave();
                                        },
                                        child: Container(
                                            width: 100,
@@ -128,19 +128,19 @@ class _howtoplayState extends State<howtoplay> {
                                              ],
                                            )),
                                      ),
-                                       GestureDetector(
-                                       onTap: (){
-                                          // BlocProvider.of<Cubits>(context).goHome();
-                                         Navigator.push(context, MaterialPageRoute(builder: ((context) => const Nav(index: 1))));
-                                       },
-                                       child: Container(
-                                           width: 100,
-                                           child: Row(
-                                             children: [
-                                               ResponsiveButton(text:'Ready',width: 100,),
-                                             ],
-                                           )),
-                                     ),
+                                    //    GestureDetector(
+                                    //    onTap: (){
+                                    //       // BlocProvider.of<Cubits>(context).goHome();
+                                    //      Navigator.push(context, MaterialPageRoute(builder: ((context) => const Nav(index: 1))));
+                                    //    },
+                                    //    child: Container(
+                                    //        width: 100,
+                                    //        child: Row(
+                                    //          children: [
+                                    //            ResponsiveButton(text:'Ready',width: 100,),
+                                    //          ],
+                                    //        )),
+                                    //  ),
                       ],
                     )
                     ),

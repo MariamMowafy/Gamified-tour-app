@@ -71,8 +71,6 @@ Future<Position> _determinePosition() async {
 }
 
 
-
-
       return Scaffold(
         body: Container(
           child: Stack(
@@ -85,7 +83,8 @@ Future<Position> _determinePosition() async {
                   width: 500,
                   
                   child: 
-                GoogleMap(initialCameraPosition: CameraPosition(target: LatLng(30,31)),)
+                GoogleMap(
+                  initialCameraPosition: CameraPosition(target: LatLng(30,31)),)
                    
                   ),
               ),

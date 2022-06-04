@@ -71,12 +71,12 @@ class DataServices{
       return <CheckpointModel>[];
     }
   }
-    Future<List<dynamic>>getcheckpointsquestion(index) async {
+    Future<List<dynamic>>getcheckpointsquestion() async {
     
-    void incrementindex(){
-      index++;
-    }
-    var apiUrl = '/tour/1/checkpoints/$index/question';//combined-Uri
+    // void incrementindex(){
+    //   index++;
+    // }
+    var apiUrl = '/tour/1/checkpoints/1/question';//combined-Uri
     var link;
     http.Response res = await http.get(Uri.parse(baseUrl+apiUrl));
     try{

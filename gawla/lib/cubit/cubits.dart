@@ -56,11 +56,11 @@ class Cubits extends Cubit<CubitStates> {
    howtoplay(TourModel tour){
     emit(howtoplayState(tour));
   }
-     newnave({required index} ) async {
+     newnave() async {
       try {
       emit(LoadingState());//show loading state
       final List<CheckpointModel> checkpoint = await data.getcheckpoints() as List<CheckpointModel>;//during this try to load data
-      final List<QuestionsModel> question = await data.getcheckpointsquestion(index+1)  as List<QuestionsModel>;
+      final List<QuestionsModel> question = await data.getcheckpointsquestion()  as List<QuestionsModel>;
       emit(newnavState(checkpoint,question));//once data loaded, trigger the loaded state with the new updated data
     } catch (e) {}
   }
