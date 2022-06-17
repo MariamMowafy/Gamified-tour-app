@@ -57,14 +57,16 @@ class _CubitLogicsState extends State<CubitLogics> {
             return game();
           }else{
             if(state is newnavState){
-            return newnave(index: 0,);
-          }else{
+            return newnave(index: 0,points: 0,);
+          }
+        
+          else{
             print("not the required state");
             return Container();
           }}
-          }}
+          }}}
         }}}
-        }
+        
       ),
 
       );

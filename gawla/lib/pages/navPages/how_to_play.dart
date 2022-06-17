@@ -14,7 +14,6 @@ class howtoplay extends StatefulWidget {
   @override
   State<howtoplay> createState() => _howtoplayState();
 }
-
 class _howtoplayState extends State<howtoplay> {
   @override
   Widget build(BuildContext context) {
@@ -117,7 +116,7 @@ class _howtoplayState extends State<howtoplay> {
                                        onTap: (){
                                           // BlocProvider.of<Cubits>(context).goHome();
                                          //BlocProvider.of<Cubits>(context).game(detail.tour);
-
+                                            
                                          BlocProvider.of<Cubits>(context).newnave();
                                        },
                                        child: Container(

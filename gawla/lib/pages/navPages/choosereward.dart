@@ -14,6 +14,7 @@ import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/navPages/reward_details.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
+import 'package:gawla/widgets/profile_widgets/rewardsgrid.dart';
 
 import '../../widgets/responsive_button.dart';
 import '../../widgets/exploregrids.dart';
@@ -22,16 +23,12 @@ import 'package:flutter/material.dart';
 //import 'package:gawla/widgets/appbar.dart';
 //import 'package:gawla/widgets/exploregrids.dart';
 
-class choosetour extends StatefulWidget {
-  @override
-  _choosetourState createState() => _choosetourState();
-}
 
-class _choosetourState extends State<choosetour> {
+class choosereward extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<Cubits,CubitStates>(builder: (context,state){
-      choosetourState detail = state as choosetourState;
+     // chooserewardState detail = state as chooserewardState;
     return Scaffold(
       //appBar: header(context),
       body: Container(
@@ -46,7 +43,7 @@ class _choosetourState extends State<choosetour> {
                 child: Row(
                   children: [
                     IconButton(onPressed: () {
-                          BlocProvider.of<Cubits>(context).goHome();
+                          //BlocProvider.of<Cubits>(context).goHome();
                         }, icon: Icon(Icons.arrow_back),
                           color: Colors.black,
                         ),
@@ -63,7 +60,7 @@ class _choosetourState extends State<choosetour> {
               ),
             ),
             Flexible(
-              child: ExploreGrids(),
+              child: rewardgrid(),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),

@@ -6,19 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/models/tour_model.dart';
+import 'package:gawla/pages/navPages/reward_details.dart';
 
-class ExploreGrids extends StatefulWidget {
-  @override
-  _ExploreGridsState createState() => _ExploreGridsState();
-}
 
-class _ExploreGridsState extends State<ExploreGrids> {
+
+class rewardgrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<Cubits,CubitStates>(
         builder: (context, state){
-      if(state is choosetourState){
-        List<TourModel> tourInfo = state.tours;
+   //   if(state is choosetourState){
+       // List<TourModel> tourInfo = state.tours;
+       List tourInfo = ['assets/img/reward.png','assets/img/reward.png','assets/img/reward.png','assets/img/reward.png','assets/img/reward.png'];
         return Padding(
       padding: const EdgeInsets.only(left:20.0,right: 20,bottom: 20),
       child: StaggeredGridView.countBuilder(
@@ -29,13 +28,13 @@ class _ExploreGridsState extends State<ExploreGrids> {
           return GestureDetector(
             onTap: (){
             //  BlocProvider.of<Cubits>(context).howtoplay(tourInfo[index]);
-             BlocProvider.of<Cubits>(context).detailPage(tourInfo[index]);
+             rewarddetails();
             },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
-                  image: NetworkImage(tourInfo[index].img),
+                  image: AssetImage(tourInfo[index]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -93,11 +92,6 @@ class _ExploreGridsState extends State<ExploreGrids> {
         crossAxisSpacing: 4.0,
       ),
     );
-      }else{
-        return Container();
-
-      }
-        },
-    );
-  }
-}
+      
+        });}}
+     

@@ -51,18 +51,18 @@ class _redeemrewardState extends State<redeemreward> {
 
                        children: [
                          //Padding(padding: EdgeInsets.only(top:150,bottom: 50,right: 50,left:50)),
-                        SizedBox(height: 100,),
+                        SizedBox(height: 50,),
                           Container(
                             //alignment: Alignment.center,
                             child: QrImage(
-                                   data: "1234567890",
+                                   data: detail.toString(),
                                    version: QrVersions.auto,
-                                   size: 500.0,
+                                   size: 300.0,
                           )),
                             //Image(image: AssetImage('assets/img/barcode.png'))),
                            
                           
-                           SizedBox(height:20),
+                           SizedBox(height:80),
                           Padding(
                           padding: const EdgeInsets.only(left:8.0,right: 8),
                           child: Container(

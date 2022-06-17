@@ -64,7 +64,13 @@ class Cubits extends Cubit<CubitStates> {
       emit(newnavState(checkpoint,question));//once data loaded, trigger the loaded state with the new updated data
     } catch (e) {}
   }
-
+  //    done() async {
+  //     try {
+  //     emit(LoadingState());//show loading state
+      
+  //     emit(doneState());//once data loaded, trigger the loaded state with the new updated data
+  //   } catch (e) {}
+  // }
 
 
   }

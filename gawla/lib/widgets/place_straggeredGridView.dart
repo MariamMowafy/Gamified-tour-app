@@ -23,11 +23,14 @@ class PlaceStaggeredGridview extends StatelessWidget {
       return Container(
         padding: EdgeInsets.all(24),
         child: StaggeredGridView.countBuilder(
+
           crossAxisCount: 2,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
           itemCount: tourInfo.length,
           itemBuilder: (context, index) => PlaceItem(index),
+          staggeredTileBuilder: (int index)=>
+          new StaggeredTile.fit(2),
         )
           //crossAxisSpacing: 16,
 

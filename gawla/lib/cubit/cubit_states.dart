@@ -122,3 +122,11 @@ class newnavState extends CubitStates{
   List<Object> get props => [checkpoint,question];
 
 }
+// class doneState extends CubitStates{
+//   doneState();
+
+//   @override
+//   // TODO: implement props
+//   List<Object> get props => [];
+
+// }

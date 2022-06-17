@@ -10,7 +10,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../widgets/responsive_button.dart';
-import '../navPages/done.dart';
+//import '../navPages/doneold.dart';
 
 class Nav extends StatelessWidget {
   final index;
@@ -145,7 +145,7 @@ class Nav extends StatelessWidget {
    }
    else{
      Future.delayed(Duration.zero, () async {
-  Navigator.push(context, MaterialPageRoute(builder: ((context) => const done())));
+  //Navigator.push(context, MaterialPageRoute(builder: ((context) =>  done())));
 });
     
      return SizedBox();
